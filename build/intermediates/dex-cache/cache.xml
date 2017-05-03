@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/Frank/AndroidStudioProjects/Car_park/app/libs/android-support-v4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="307c1cc532eabbf1d135b43e5c983c9da700449d">
+        <dex dex="/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/transforms/dex/debug/folders/1000/2/android-support-v4_006f93e71d876038f80527bce78709b43ec6e0d0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="51be0612f72796a773a0eff79a19b319cca930f2">
+        <dex dex="/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8587f2bc5e54c14c0b32682d3114b57f171602b0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Frank/AndroidStudioProjects/Car_park/app/libs/Android_Map3D_SDK_V5.0.0_20170311.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="1138283bb2b30bbf424a02eeeadab84edfc1571c">
+        <dex dex="/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/transforms/dex/debug/folders/1000/2/Android_Map3D_SDK_V5.0.0_20170311_f7bf9d33edd33f4eee1fc231c0468bd90e8b5da8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_b068125b97f7a4b1463fd188b3d267868b618b61/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Frank/AndroidStudioProjects/Car_park/app/libs/Volley.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="77faa9ffd189160d1e22c58fdf5eed0a9a08b816">
+        <dex dex="/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/transforms/dex/debug/folders/1000/2/Volley_9fec84539492bb769eb2a8443545bc071c6fe669/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Frank/AndroidStudioProjects/Car_park/app/libs/AMap_Search_V5.0.0_20170309.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="315a916b8186d7c5496a81cf683455c558196a1d">
+        <dex dex="/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/transforms/dex/debug/folders/1000/2/AMap_Search_V5.0.0_20170309_39ae70d0ce48c990afff9757a030ddace39db17d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Frank/AndroidStudioProjects/Car_park/app/libs/AMap_Search_V5.0.0_20170309.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="315a916b8186d7c5496a81cf683455c558196a1d">
+        <dex dex="/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/transforms/dex/debug/folders/1000/2/AMap_Search_V5.0.0_20170309_39ae70d0ce48c990afff9757a030ddace39db17d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Frank/AndroidStudioProjects/Car_park/app/libs/Android_Map3D_SDK_V5.0.0_20170311.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="1138283bb2b30bbf424a02eeeadab84edfc1571c">
+        <dex dex="/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/transforms/dex/debug/folders/1000/2/Android_Map3D_SDK_V5.0.0_20170311_f7bf9d33edd33f4eee1fc231c0468bd90e8b5da8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Frank/AndroidStudioProjects/Car_park/app/libs/android-support-v4.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="307c1cc532eabbf1d135b43e5c983c9da700449d">
+        <dex dex="/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/transforms/dex/debug/folders/1000/2/android-support-v4_006f93e71d876038f80527bce78709b43ec6e0d0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Frank/AndroidStudioProjects/Car_park/app/libs/Volley.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="77faa9ffd189160d1e22c58fdf5eed0a9a08b816">
+        <dex dex="/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/transforms/dex/debug/folders/1000/2/Volley_9fec84539492bb769eb2a8443545bc071c6fe669/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_b068125b97f7a4b1463fd188b3d267868b618b61/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c397443a67065430bbba737b5431eac6c4014991">
+        <dex dex="/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8587f2bc5e54c14c0b32682d3114b57f171602b0/classes.dex" />
+    </item>
+
+</items>

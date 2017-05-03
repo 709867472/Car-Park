@@ -1,0 +1,103 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:2:1-37:12
+	package
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:3:5-35
+		INJECTED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:7:5-67
+	android:name
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:7:22-64
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:9:5-81
+	android:name
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:9:22-78
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:11:5-79
+	android:name
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:11:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:13:5-76
+	android:name
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:13:22-73
+uses-permission#android.permission.READ_PHONE_STATE
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:15:5-75
+	android:name
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:15:22-72
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:17:5-81
+	android:name
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:17:22-78
+application
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:18:5-35:19
+MERGED from [com.android.support:appcompat-v7:25.0.1] /Users/Frank/.android/build-cache/f971a0423098ec8ec5d143a70ea374f6d4dd5555/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:25.0.1] /Users/Frank/.android/build-cache/48de9caf9f815a08ffb75b8035ee374eaa2fd917/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:25.0.1] /Users/Frank/.android/build-cache/d30f7ecc5264d8ec87d39a673e38b31105962ab6/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:25.0.1] /Users/Frank/.android/build-cache/6bde6758cf68c0158fa15a9c0b1f37d9de8c6b3c/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-ui:25.0.1] /Users/Frank/.android/build-cache/c4648f2483003ba8b67adb24a5290beeb23bbd17/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:25.0.1] /Users/Frank/.android/build-cache/dfb41b5a89596dd0fe9d16c23ee5274e8eb2318c/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.0.1] /Users/Frank/.android/build-cache/d3498ea7cf6f597115f09a9d22398b48a21852fe/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:25.0.1] /Users/Frank/.android/build-cache/5798ef2334e52bc606af0ab144c768ff3390cb1f/output/AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-compat:25.0.1] /Users/Frank/.android/build-cache/e348bf04b7f0b20fcde31af6b49ffc0a8e5fbce5/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.0-alpha7] /Users/Frank/.android/build-cache/d715284286d8e12300abb113afcbadbbd7beab22/output/AndroidManifest.xml:9:5-20
+	android:label
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:21:9-41
+	android:supportsRtl
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:23:9-35
+	android:roundIcon
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:22:9-54
+	android:allowBackup
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:19:9-35
+	android:icon
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:20:9-43
+	android:theme
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:24:9-40
+meta-data#com.amap.api.v2.apikey
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:25:9-27:63
+	android:value
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:27:13-61
+	android:name
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:26:13-50
+activity#cn.edu.djtu.car_park.MainActivity
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:28:9-34:20
+	android:name
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:28:19-47
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:29:13-33:29
+action#android.intent.action.MAIN
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:30:17-69
+	android:name
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:30:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:32:17-77
+	android:name
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:32:27-74
+uses-sdk
+INJECTED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:25.0.1] /Users/Frank/.android/build-cache/f971a0423098ec8ec5d143a70ea374f6d4dd5555/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:25.0.1] /Users/Frank/.android/build-cache/48de9caf9f815a08ffb75b8035ee374eaa2fd917/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.0.1] /Users/Frank/.android/build-cache/d30f7ecc5264d8ec87d39a673e38b31105962ab6/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.0.1] /Users/Frank/.android/build-cache/6bde6758cf68c0158fa15a9c0b1f37d9de8c6b3c/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.0.1] /Users/Frank/.android/build-cache/c4648f2483003ba8b67adb24a5290beeb23bbd17/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.0.1] /Users/Frank/.android/build-cache/dfb41b5a89596dd0fe9d16c23ee5274e8eb2318c/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:25.0.1] /Users/Frank/.android/build-cache/d3498ea7cf6f597115f09a9d22398b48a21852fe/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.0.1] /Users/Frank/.android/build-cache/5798ef2334e52bc606af0ab144c768ff3390cb1f/output/AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:support-compat:25.0.1] /Users/Frank/.android/build-cache/e348bf04b7f0b20fcde31af6b49ffc0a8e5fbce5/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support.constraint:constraint-layout:1.0.0-alpha7] /Users/Frank/.android/build-cache/d715284286d8e12300abb113afcbadbbd7beab22/output/AndroidManifest.xml:5:5-7:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:25.0.1] /Users/Frank/.android/build-cache/f971a0423098ec8ec5d143a70ea374f6d4dd5555/output/AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml

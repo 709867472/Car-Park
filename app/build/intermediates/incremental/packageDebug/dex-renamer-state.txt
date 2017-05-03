@@ -1,0 +1,7 @@
+#Wed May 03 09:49:57 CST 2017
+base.0=/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_b068125b97f7a4b1463fd188b3d267868b618b61
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8587f2bc5e54c14c0b32682d3114b57f171602b0/classes.dex
+base.1=/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_8587f2bc5e54c14c0b32682d3114b57f171602b0
+file.0=/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_b068125b97f7a4b1463fd188b3d267868b618b61/classes.dex
