@@ -30,7 +30,7 @@
         android:theme="@style/AppTheme" >
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="ace1cde92793df2a71179095abea0ab2" />
+            android:value="6f63b2c4818bf622d7f694ace0e417fa" />
 
         <activity android:name="cn.edu.djtu.car_park.MainActivity" >
             <intent-filter>

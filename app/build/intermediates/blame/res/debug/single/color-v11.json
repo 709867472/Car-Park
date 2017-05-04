@@ -1,13 +1,5 @@
 [
     {
-        "merged": "/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
-        "source": "/Users/Frank/.android/build-cache/f971a0423098ec8ec5d143a70ea374f6d4dd5555/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
-    },
-    {
-        "merged": "/Users/Frank/AndroidStudioProjects/Car_park/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
-        "source": "/Users/Frank/.android/build-cache/f971a0423098ec8ec5d143a70ea374f6d4dd5555/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
-    },
-    {
         "merged": "/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
         "source": "/Users/Frank/.android/build-cache/f971a0423098ec8ec5d143a70ea374f6d4dd5555/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
     },
