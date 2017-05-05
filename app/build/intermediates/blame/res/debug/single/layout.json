@@ -4,12 +4,12 @@
         "source": "/Users/Frank/.android/build-cache/f971a0423098ec8ec5d143a70ea374f6d4dd5555/output/res/layout/notification_template_big_media_narrow_custom.xml"
     },
     {
-        "merged": "/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
-        "source": "/Users/Frank/.android/build-cache/f971a0423098ec8ec5d143a70ea374f6d4dd5555/output/res/layout/select_dialog_item_material.xml"
-    },
-    {
         "merged": "/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
         "source": "/Users/Frank/.android/build-cache/f971a0423098ec8ec5d143a70ea374f6d4dd5555/output/res/layout/select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
+        "source": "/Users/Frank/.android/build-cache/f971a0423098ec8ec5d143a70ea374f6d4dd5555/output/res/layout/select_dialog_item_material.xml"
     },
     {
         "merged": "/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",

@@ -6,7 +6,7 @@
     density="xhdpi"
     format="10"
     plugin-version="2.3.0"
-    timestamp="1493981917343"
+    timestamp="1493983773145"
     token="8864051065768921673"
     verifier="COLD_SWAP_REQUESTED" >
 
@@ -70,7 +70,18 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1493981917343"
+        timestamp="1493983097672"
+        verifier="COLD_SWAP_REQUESTED" >
+        <artifact
+            location="/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
+            type="SPLIT" />
+    </build>
+    <build
+        build-mode="COLD"
+        timestamp="1493983773145"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/Frank/AndroidStudioProjects/Car_Park/app/build/outputs/apk/app-debug.apk"

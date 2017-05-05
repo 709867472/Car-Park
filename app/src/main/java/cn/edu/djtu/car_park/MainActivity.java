@@ -390,16 +390,16 @@ public class MainActivity extends Activity implements OnClickListener,
 
     }
 
-    private int[] markers = {R.drawable.poi_marker_1,
-            R.drawable.poi_marker_2,
-            R.drawable.poi_marker_3,
-            R.drawable.poi_marker_4,
-            R.drawable.poi_marker_5,
-            R.drawable.poi_marker_6,
-            R.drawable.poi_marker_7,
-            R.drawable.poi_marker_8,
-            R.drawable.poi_marker_9,
-            R.drawable.poi_marker_10
+    private int[] markers = {R.drawable.poi_marker,
+            R.drawable.poi_marker,
+            R.drawable.poi_marker,
+            R.drawable.poi_marker,
+            R.drawable.poi_marker,
+            R.drawable.poi_marker,
+            R.drawable.poi_marker,
+            R.drawable.poi_marker,
+            R.drawable.poi_marker,
+            R.drawable.poi_marker
     };
 
     private void whetherToShowDetailInfo(boolean isToShow) {
