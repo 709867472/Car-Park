@@ -8,6 +8,10 @@
         "source": "/Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/res/drawable-hdpi/poi_marker_1.png"
     },
     {
+        "merged": "/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/res/merged/debug/drawable-hdpi/point.png",
+        "source": "/Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/res/drawable-hdpi/point.png"
+    },
+    {
         "merged": "/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/res/merged/debug/drawable-hdpi/search_input_half.9.png",
         "source": "/Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/res/drawable-hdpi/search_input_half.9.png"
     },

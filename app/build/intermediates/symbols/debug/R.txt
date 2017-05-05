@@ -542,8 +542,8 @@ int drawable notification_bg_low_pressed 0x7f020059
 int drawable notification_bg_normal 0x7f02005a
 int drawable notification_bg_normal_pressed 0x7f02005b
 int drawable notification_icon_background 0x7f02005c
-int drawable notification_template_icon_bg 0x7f02006e
-int drawable notification_template_icon_low_bg 0x7f02006f
+int drawable notification_template_icon_bg 0x7f02006f
+int drawable notification_template_icon_low_bg 0x7f020070
 int drawable notification_tile_bg 0x7f02005d
 int drawable notify_panel_notification_icon_bg 0x7f02005e
 int drawable offlinearrow_tab2_pressed 0x7f02005f
@@ -558,9 +558,10 @@ int drawable poi_marker_7 0x7f020067
 int drawable poi_marker_8 0x7f020068
 int drawable poi_marker_9 0x7f020069
 int drawable poi_marker_pressed 0x7f02006a
-int drawable point4 0x7f02006b
-int drawable search_input 0x7f02006c
-int drawable search_input_half 0x7f02006d
+int drawable point 0x7f02006b
+int drawable point4 0x7f02006c
+int drawable search_input 0x7f02006d
+int drawable search_input_half 0x7f02006e
 int id action0 0x7f0b0060
 int id action_bar 0x7f0b0046
 int id action_bar_activity_content 0x7f0b0000

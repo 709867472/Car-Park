@@ -138,7 +138,7 @@ public class MainActivity extends Activity implements OnClickListener,
             //myLocationStyle.anchor(0,2);//定位蓝点图标像素与定位蓝点坐标的关联点.
             myLocationStyle.strokeColor(0x550099cc);//设置定位蓝点精度圆圈的边框颜色的方法。
             myLocationStyle.radiusFillColor(0x5500ddff);//设置定位蓝点精度圆圈的填充颜色的方法。
-            //myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.point4)));//设置定位蓝点图标
+            myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.point)));//设置定位蓝点图标
             mAMap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
             mAMap.getUiSettings().setMyLocationButtonEnabled(true);//设置默认定位按钮是否显示
             mAMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。

@@ -2075,8 +2075,8 @@ containing a value of this type.
         public static final int notification_bg_normal=0x7f02005a;
         public static final int notification_bg_normal_pressed=0x7f02005b;
         public static final int notification_icon_background=0x7f02005c;
-        public static final int notification_template_icon_bg=0x7f02006e;
-        public static final int notification_template_icon_low_bg=0x7f02006f;
+        public static final int notification_template_icon_bg=0x7f02006f;
+        public static final int notification_template_icon_low_bg=0x7f020070;
         public static final int notification_tile_bg=0x7f02005d;
         public static final int notify_panel_notification_icon_bg=0x7f02005e;
         public static final int offlinearrow_tab2_pressed=0x7f02005f;
@@ -2091,9 +2091,10 @@ containing a value of this type.
         public static final int poi_marker_8=0x7f020068;
         public static final int poi_marker_9=0x7f020069;
         public static final int poi_marker_pressed=0x7f02006a;
-        public static final int point4=0x7f02006b;
-        public static final int search_input=0x7f02006c;
-        public static final int search_input_half=0x7f02006d;
+        public static final int point=0x7f02006b;
+        public static final int point4=0x7f02006c;
+        public static final int search_input=0x7f02006d;
+        public static final int search_input_half=0x7f02006e;
     }
     public static final class id {
         public static final int action0=0x7f0b0060;
