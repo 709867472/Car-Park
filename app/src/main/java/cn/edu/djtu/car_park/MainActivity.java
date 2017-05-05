@@ -26,7 +26,6 @@ import com.amap.api.maps.MapView;
 import com.amap.api.maps.UiSettings;
 import com.amap.api.maps.model.BitmapDescriptor;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
-import com.amap.api.maps.model.CircleOptions;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.LatLngBounds;
 import com.amap.api.maps.model.Marker;
@@ -36,6 +35,11 @@ import com.amap.api.services.core.AMapException;
 import com.amap.api.services.core.LatLonPoint;
 import com.amap.api.services.core.PoiItem;
 import com.amap.api.services.core.SuggestionCity;
+import com.amap.api.services.geocoder.GeocodeResult;
+import com.amap.api.services.geocoder.GeocodeSearch;
+import com.amap.api.services.geocoder.GeocodeSearch.OnGeocodeSearchListener;
+import com.amap.api.services.geocoder.RegeocodeQuery;
+import com.amap.api.services.geocoder.RegeocodeResult;
 import com.amap.api.services.poisearch.PoiResult;
 import com.amap.api.services.poisearch.PoiSearch;
 import com.amap.api.services.poisearch.PoiSearch.OnPoiSearchListener;
@@ -51,14 +55,14 @@ import cn.edu.djtu.car_park.util.ToastUtil;
  */
 public class MainActivity extends Activity implements OnClickListener,
         OnMapClickListener, OnInfoWindowClickListener, InfoWindowAdapter, OnMarkerClickListener,
-        OnPoiSearchListener {
+        OnPoiSearchListener, OnGeocodeSearchListener {
     private MapView mapview;
     private AMap mAMap;
 
     private PoiResult poiResult; // poi返回的结果
     private int currentPage = 0;// 当前页面，从0开始计数
     private PoiSearch.Query query;// Poi查询条件类
-//    private LatLonPoint lp = new LatLonPoint(38.913694, 121.614755);// 大连坐标
+    //    private LatLonPoint lp = new LatLonPoint(38.913694, 121.614755);// 大连坐标
     private Marker locationMarker; // 选择的点
     private Marker detailMarker;
     private Marker mlastMarker;
@@ -70,8 +74,11 @@ public class MainActivity extends Activity implements OnClickListener,
     private TextView mPoiName, mPoiAddress;
     private String keyWord = "";
     private EditText mSearchText;
+    private String city;
+    private GeocodeSearch geocoderSearch;
 
     public AMapLocationClient mLocationClient = null;//声明AMapLocationClient类对象
+    //声明定位回调监听器
     public AMapLocationListener mLocationListener = new AMapLocationListener() {
         @Override
         public void onLocationChanged(AMapLocation aMapLocation) {
@@ -79,18 +86,21 @@ public class MainActivity extends Activity implements OnClickListener,
                 if (aMapLocation.getErrorCode() == 0) {
                     latitude = aMapLocation.getLatitude();//获取纬度
                     longitude = aMapLocation.getLongitude();//获取经度
-                }else {
+
+                    RegeocodeQuery query = new RegeocodeQuery(new LatLonPoint(latitude, longitude), 200, GeocodeSearch.AMAP);// 第一个参数表示一个Latlng，第二参数表示范围多少米，第三个参数表示是火系坐标系还是GPS原生坐标系
+                    geocoderSearch.getFromLocationAsyn(query);// 设置异步逆地理编码请求
+                } else {
                     //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
-                    Log.e("AmapError","location Error, ErrCode:"
+                    Log.e("AmapError", "location Error, ErrCode:"
                             + aMapLocation.getErrorCode() + ", errInfo:"
                             + aMapLocation.getErrorInfo());
                 }
             }
         }
-    };//声明定位回调监听器
+    };
     public AMapLocationClientOption mLocationOption = null;//声明AMapLocationClientOption对象
-    private double latitude=0;
-    private double longitude=0;
+    private double latitude = 0;
+    private double longitude = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,9 +151,13 @@ public class MainActivity extends Activity implements OnClickListener,
             mAMap.setInfoWindowAdapter(this);
             TextView searchButton = (TextView) findViewById(R.id.btn_search);
             searchButton.setOnClickListener(this);
+
+            geocoderSearch = new GeocodeSearch(this);
+            geocoderSearch.setOnGeocodeSearchListener(this);
         }
         setup();
     }
+
     private void setup() {
         mPoiDetail = (RelativeLayout) findViewById(R.id.poi_detail);
         mPoiDetail.setOnClickListener(new OnClickListener() {
@@ -159,7 +173,7 @@ public class MainActivity extends Activity implements OnClickListener,
         });
         mPoiName = (TextView) findViewById(R.id.poi_name);
         mPoiAddress = (TextView) findViewById(R.id.poi_address);
-        mSearchText = (EditText)findViewById(R.id.input_edittext);
+        mSearchText = (EditText) findViewById(R.id.input_edittext);
     }
     /**
      * 开始进行poi搜索
@@ -171,14 +185,17 @@ public class MainActivity extends Activity implements OnClickListener,
         keyWord = mSearchText.getText().toString().trim();
         keyWord += "停车场";
         currentPage = 0;
-        query = new PoiSearch.Query(keyWord, "", "");// 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（空字符串代表全国）
-        query.setPageSize(20);// 设置每页最多返回多少条poiitem
+        query = new PoiSearch.Query(keyWord, "", city);// 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（空字符串代表全国）
+        query.setPageSize(10);// 设置每页最多返回多少条poiitem
         query.setPageNum(currentPage);// 设置查第一页
 
+        poiSearch = new PoiSearch(this, query);
+        poiSearch.setOnPoiSearchListener(this);
         if (latitude != 0 && longitude != 0) {
-            poiSearch = new PoiSearch(this, query);
-            poiSearch.setOnPoiSearchListener(this);
-            poiSearch.setBound(new SearchBound(new LatLonPoint(latitude,longitude), 5000, true));// 设置搜索区域为以当前位置点为圆心，其周围5000米范围
+            if ("停车场".equals(keyWord)) {
+                poiSearch.setBound(new SearchBound(new LatLonPoint(latitude, longitude), 5000, true));// 设置搜索区域为以当前位置点为圆心，其周围5000米范围
+            }
+//            System.out.println("what is that:"+keyWord);
             poiSearch.searchPOIAsyn();// 异步搜索
         }
     }
@@ -244,7 +261,7 @@ public class MainActivity extends Activity implements OnClickListener,
                             resetlastmarker();
                         }
                         //清理之前搜索结果的marker
-                        if (poiOverlay !=null) {
+                        if (poiOverlay != null) {
                             poiOverlay.removeFromMap();
                         }
 //                        mAMap.clear();
@@ -277,7 +294,7 @@ public class MainActivity extends Activity implements OnClickListener,
                 ToastUtil
                         .show(MainActivity.this, R.string.no_result);
             }
-        } else  {
+        } else {
             ToastUtil.showerror(this.getApplicationContext(), rcode);
         }
     }
@@ -307,7 +324,7 @@ public class MainActivity extends Activity implements OnClickListener,
             } catch (Exception e) {
                 // TODO: handle exception
             }
-        }else {
+        } else {
             whetherToShowDetailInfo(false);
             resetlastmarker();
         }
@@ -324,7 +341,7 @@ public class MainActivity extends Activity implements OnClickListener,
                     .fromBitmap(BitmapFactory.decodeResource(
                             getResources(),
                             markers[index])));
-        }else {
+        } else {
             mlastMarker.setIcon(BitmapDescriptorFactory.fromBitmap(
                     BitmapFactory.decodeResource(getResources(), R.drawable.marker_other_highlight)));
         }
@@ -410,31 +427,51 @@ public class MainActivity extends Activity implements OnClickListener,
     private void showSuggestCity(List<SuggestionCity> cities) {
         String infomation = "推荐城市\n";
         for (int i = 0; i < cities.size(); i++) {
-            infomation += "城市名称:" + cities.get(i).getCityName() + "城市区号:"
-                    + cities.get(i).getCityCode() + "城市编码:"
-                    + cities.get(i).getAdCode() + "\n";
+            infomation += cities.get(i).getCityName() + "\n";
         }
         ToastUtil.show(this, infomation);
+
+    }
+
+    @Override
+    public void onRegeocodeSearched(RegeocodeResult result, int rCode) {
+        if (rCode == AMapException.CODE_AMAP_SUCCESS) {
+            if (result != null && result.getRegeocodeAddress() != null
+                    && result.getRegeocodeAddress().getFormatAddress() != null) {
+                city = result.getRegeocodeAddress().getCity();
+                System.out.println("latitude:" + latitude + ",longitude:" + longitude);
+                System.out.println("城市：" + city);
+            } else {
+                ToastUtil.show(MainActivity.this, R.string.no_result);
+            }
+        } else {
+            ToastUtil.showerror(this, rCode);
+        }
+    }
+
+    @Override
+    public void onGeocodeSearched(GeocodeResult geocodeResult, int i) {
 
     }
 
 
     /**
      * 自定义PoiOverlay
-     *
      */
 
     private class MyPoiOverlay {
         private AMap mamap;
         private List<PoiItem> mPois;
         private ArrayList<Marker> mPoiMarks = new ArrayList<Marker>();
-        public MyPoiOverlay(AMap amap ,List<PoiItem> pois) {
+
+        public MyPoiOverlay(AMap amap, List<PoiItem> pois) {
             mamap = amap;
             mPois = pois;
         }
 
         /**
          * 添加Marker到地图中。
+         *
          * @since V2.1.0
          */
         public void addToMap() {
@@ -459,6 +496,7 @@ public class MainActivity extends Activity implements OnClickListener,
 
         /**
          * 移动镜头到当前的视角。
+         *
          * @since V2.1.0
          */
         public void zoomToSpan() {
@@ -515,6 +553,7 @@ public class MainActivity extends Activity implements OnClickListener,
 
         /**
          * 返回第index的poi的信息。
+         *
          * @param index 第几个poi。
          * @return poi的信息。poi对象详见搜索服务模块的基础核心包（com.amap.api.services.core）中的类 <strong><a href="../../../../../../Search/com/amap/api/services/core/PoiItem.html" title="com.amap.api.services.core中的类">PoiItem</a></strong>。
          * @since V2.1.0
@@ -531,7 +570,7 @@ public class MainActivity extends Activity implements OnClickListener,
                 BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(
                         BitmapFactory.decodeResource(getResources(), markers[arg0]));
                 return icon;
-            }else {
+            } else {
                 BitmapDescriptor icon = BitmapDescriptorFactory.fromBitmap(
                         BitmapFactory.decodeResource(getResources(), R.drawable.marker_other_highlight));
                 return icon;
