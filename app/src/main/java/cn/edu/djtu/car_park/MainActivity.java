@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
@@ -11,6 +12,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
+import com.amap.api.location.AMapLocation;
+import com.amap.api.location.AMapLocationClient;
+import com.amap.api.location.AMapLocationClientOption;
+import com.amap.api.location.AMapLocationListener;
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.AMap.InfoWindowAdapter;
 import com.amap.api.maps.AMap.OnInfoWindowClickListener;
@@ -53,7 +58,7 @@ public class MainActivity extends Activity implements OnClickListener,
     private PoiResult poiResult; // poi返回的结果
     private int currentPage = 0;// 当前页面，从0开始计数
     private PoiSearch.Query query;// Poi查询条件类
-    private LatLonPoint lp = new LatLonPoint(38.913694, 121.614755);// 大连坐标
+//    private LatLonPoint lp = new LatLonPoint(38.913694, 121.614755);// 大连坐标
     private Marker locationMarker; // 选择的点
     private Marker detailMarker;
     private Marker mlastMarker;
@@ -66,6 +71,26 @@ public class MainActivity extends Activity implements OnClickListener,
     private String keyWord = "";
     private EditText mSearchText;
 
+    public AMapLocationClient mLocationClient = null;//声明AMapLocationClient类对象
+    public AMapLocationListener mLocationListener = new AMapLocationListener() {
+        @Override
+        public void onLocationChanged(AMapLocation aMapLocation) {
+            if (aMapLocation != null) {
+                if (aMapLocation.getErrorCode() == 0) {
+                    latitude = aMapLocation.getLatitude();//获取纬度
+                    longitude = aMapLocation.getLongitude();//获取经度
+                }else {
+                    //定位失败时，可通过ErrCode（错误码）信息来确定失败的原因，errInfo是错误信息，详见错误码表。
+                    Log.e("AmapError","location Error, ErrCode:"
+                            + aMapLocation.getErrorCode() + ", errInfo:"
+                            + aMapLocation.getErrorInfo());
+                }
+            }
+        }
+    };//声明定位回调监听器
+    public AMapLocationClientOption mLocationOption = null;//声明AMapLocationClientOption对象
+    private double latitude=0;
+    private double longitude=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,9 +108,17 @@ public class MainActivity extends Activity implements OnClickListener,
     private void init() {
         if (mAMap == null) {
             mAMap = mapview.getMap();
+            mLocationClient = new AMapLocationClient(getApplicationContext());//初始化定位
+            mLocationClient.setLocationListener(mLocationListener);//设置定位回调监听
+            mLocationOption = new AMapLocationClientOption();//初始化AMapLocationClientOption对象
             UiSettings uiSettings = mAMap.getUiSettings();
-            uiSettings.setLogoBottomMargin(-26);//隐藏logo
 
+            mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);//设置定位模式为AMapLocationMode.Hight_Accuracy，高精度模式。
+            mLocationOption.setOnceLocation(true);//获取一次定位结果
+            mLocationClient.setLocationOption(mLocationOption);//给定位客户端对象设置定位参数
+            mLocationClient.startLocation();//启动定位
+
+            uiSettings.setLogoBottomMargin(-26);//隐藏logo
 //            uiSettings.setCompassEnabled(true);//显示指南针
             uiSettings.setScaleControlsEnabled(true);//控制比例尺控件是否显示
             MyLocationStyle myLocationStyle;
@@ -95,10 +128,12 @@ public class MainActivity extends Activity implements OnClickListener,
             //myLocationStyle.anchor(0,2);//定位蓝点图标像素与定位蓝点坐标的关联点.
             myLocationStyle.strokeColor(0x550099cc);//设置定位蓝点精度圆圈的边框颜色的方法。
             myLocationStyle.radiusFillColor(0x5500ddff);//设置定位蓝点精度圆圈的填充颜色的方法。
+            //myLocationStyle.myLocationIcon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.point4)));//设置定位蓝点图标
             mAMap.setMyLocationStyle(myLocationStyle);//设置定位蓝点的Style
             mAMap.getUiSettings().setMyLocationButtonEnabled(true);//设置默认定位按钮是否显示
             mAMap.setMyLocationEnabled(true);// 设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false。
             mAMap.showIndoorMap(true);//显示室内地图。
+            mAMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude, longitude), 14));
 
             mAMap.setOnMapClickListener(this);
             mAMap.setOnMarkerClickListener(this);
@@ -106,16 +141,8 @@ public class MainActivity extends Activity implements OnClickListener,
             mAMap.setInfoWindowAdapter(this);
             TextView searchButton = (TextView) findViewById(R.id.btn_search);
             searchButton.setOnClickListener(this);
-
-            locationMarker = mAMap.addMarker(new MarkerOptions()
-                    .anchor(0.5f, 0.5f)
-                    .icon(BitmapDescriptorFactory
-                            .fromBitmap(BitmapFactory.decodeResource(getResources(), R.drawable.point4)))
-                    .position(new LatLng(lp.getLatitude(), lp.getLongitude())));
-            locationMarker.showInfoWindow();
         }
         setup();
-        mAMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(lp.getLatitude(), lp.getLongitude()), 14));
     }
     private void setup() {
         mPoiDetail = (RelativeLayout) findViewById(R.id.poi_detail);
@@ -142,15 +169,16 @@ public class MainActivity extends Activity implements OnClickListener,
      */
     protected void doSearchQuery() {
         keyWord = mSearchText.getText().toString().trim();
+        keyWord += "停车场";
         currentPage = 0;
         query = new PoiSearch.Query(keyWord, "", "");// 第一个参数表示搜索字符串，第二个参数表示poi搜索类型，第三个参数表示poi搜索区域（空字符串代表全国）
         query.setPageSize(20);// 设置每页最多返回多少条poiitem
         query.setPageNum(currentPage);// 设置查第一页
 
-        if (lp != null) {
+        if (latitude != 0 && longitude != 0) {
             poiSearch = new PoiSearch(this, query);
             poiSearch.setOnPoiSearchListener(this);
-            poiSearch.setBound(new SearchBound(lp, 5000, true));// 设置搜索区域为以lp点为圆心，其周围5000米范围
+            poiSearch.setBound(new SearchBound(new LatLonPoint(latitude,longitude), 5000, true));// 设置搜索区域为以当前位置点为圆心，其周围5000米范围
             poiSearch.searchPOIAsyn();// 异步搜索
         }
     }
@@ -219,24 +247,23 @@ public class MainActivity extends Activity implements OnClickListener,
                         if (poiOverlay !=null) {
                             poiOverlay.removeFromMap();
                         }
-                        mAMap.clear();
+//                        mAMap.clear();
                         poiOverlay = new MyPoiOverlay(mAMap, poiItems);
                         poiOverlay.addToMap();
                         poiOverlay.zoomToSpan();
 
-                        mAMap.addMarker(new MarkerOptions()
-                                .anchor(0.5f, 0.5f)
-                                .icon(BitmapDescriptorFactory
-                                        .fromBitmap(BitmapFactory.decodeResource(
-                                                getResources(), R.drawable.point4)))
-                                .position(new LatLng(lp.getLatitude(), lp.getLongitude())));
-
-                        mAMap.addCircle(new CircleOptions()
-                                .center(new LatLng(lp.getLatitude(),
-                                        lp.getLongitude())).radius(5000)
-                                .strokeColor(Color.BLUE)
-                                .fillColor(Color.argb(50, 1, 1, 1))
-                                .strokeWidth(2));
+//                        mAMap.addMarker(new MarkerOptions()
+//                                .anchor(0.5f, 0.5f)
+//                                .icon(BitmapDescriptorFactory
+//                                        .fromBitmap(BitmapFactory.decodeResource(
+//                                                getResources(), R.drawable.point4)))
+//                                .position(new LatLng(latitude, longitude)));
+//
+//                        mAMap.addCircle(new CircleOptions()
+//                                .center(new LatLng(latitude,
+//                                        longitude))
+//                                .strokeColor(0x550099cc)
+//                                .fillColor(0x5500ddff));
 
                     } else if (suggestionCities != null
                             && suggestionCities.size() > 0) {

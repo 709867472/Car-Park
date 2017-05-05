@@ -3,15 +3,6 @@
 
     <item
         is-multidex="true"
-        jar="/Users/Frank/AndroidStudioProjects/Car_Park/app/libs/android-support-v4.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.1"
-        sha1="307c1cc532eabbf1d135b43e5c983c9da700449d">
-        <dex dex="/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/transforms/dex/debug/folders/1000/2/android-support-v4_a288e30fdb6ad2ac0f5047d0722bdf511e9975ca/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
@@ -30,6 +21,15 @@
     </item>
     <item
         is-multidex="true"
+        jar="/Users/Frank/AndroidStudioProjects/Car_Park/app/libs/AMap_Location_V3.4.0_20170427.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="fa2675ac2111742d045390a97dd39ea48d957b87">
+        <dex dex="/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/transforms/dex/debug/folders/1000/2/AMap_Location_V3.4.0_20170427_6a5c2835c7bfc91549b2dc5519ee66428dbc1225/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/Frank/AndroidStudioProjects/Car_Park/app/libs/Android_Map3D_SDK_V5.0.0_20170311.jar"
         jumboMode="true"
         optimize="true"
@@ -39,12 +39,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/Frank/AndroidStudioProjects/Car_Park/app/libs/AMap_Search_V5.0.0_20170309.jar"
+        jar="/Users/Frank/AndroidStudioProjects/Car_Park/app/libs/android-support-v4.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="315a916b8186d7c5496a81cf683455c558196a1d">
-        <dex dex="/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/transforms/dex/debug/folders/1000/2/AMap_Search_V5.0.0_20170309_b59cb9d078f544e0b55483e2afbafb56510ec3b4/classes.dex" />
+        sha1="307c1cc532eabbf1d135b43e5c983c9da700449d">
+        <dex dex="/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/transforms/dex/debug/folders/1000/2/android-support-v4_a288e30fdb6ad2ac0f5047d0722bdf511e9975ca/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -52,8 +52,17 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.1"
-        sha1="1534d092f3f78505aecf1d829315d32782059bab">
+        sha1="abec2bef95173f5268e43fa9c570fd0ae2aa5703">
         <dex dex="/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_08425dff1a42298fb584a31678a05b300e900219/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/Frank/AndroidStudioProjects/Car_Park/app/libs/AMap_Search_V5.0.0_20170309.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="315a916b8186d7c5496a81cf683455c558196a1d">
+        <dex dex="/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/transforms/dex/debug/folders/1000/2/AMap_Search_V5.0.0_20170309_b59cb9d078f544e0b55483e2afbafb56510ec3b4/classes.dex" />
     </item>
 
 </items>
