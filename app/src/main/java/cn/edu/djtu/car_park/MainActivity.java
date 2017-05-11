@@ -59,7 +59,6 @@ public class MainActivity extends Activity implements OnClickListener,
         OnPoiSearchListener, OnGeocodeSearchListener {
     private MapView mapview;
     private AMap mAMap;
-    private int number=0;
 
     private PoiResult poiResult; // poi返回的结果
     private int currentPage = 0;// 当前页面，从0开始计数
@@ -153,9 +152,7 @@ public class MainActivity extends Activity implements OnClickListener,
             mAMap.setOnInfoWindowClickListener(this);
             mAMap.setInfoWindowAdapter(this);
             TextView searchButton = (TextView) findViewById(R.id.btn_search);
-            LinearLayout detailButton = (LinearLayout) findViewById(R.id.detail);
             searchButton.setOnClickListener(this);
-            detailButton.setOnClickListener(this);
 
             geocoderSearch = new GeocodeSearch(this);
             geocoderSearch.setOnGeocodeSearchListener(this);
@@ -206,7 +203,7 @@ public class MainActivity extends Activity implements OnClickListener,
     /**
      * 显示所有信息
      */
-    protected void showAllDetail(){
+    public void showAllDetail(View v){
         Intent intent = new Intent(this, AllDetailActivity.class);
         startActivity(intent);
     }
@@ -394,9 +391,6 @@ public class MainActivity extends Activity implements OnClickListener,
         switch (v.getId()) {
             case R.id.btn_search:
                 doSearchQuery();
-                break;
-            case R.id.detail:
-                showAllDetail();
                 break;
             default:
                 break;
