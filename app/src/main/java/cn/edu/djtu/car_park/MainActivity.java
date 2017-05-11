@@ -1,6 +1,7 @@
 package cn.edu.djtu.car_park;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -58,6 +60,7 @@ public class MainActivity extends Activity implements OnClickListener,
         OnPoiSearchListener, OnGeocodeSearchListener {
     private MapView mapview;
     private AMap mAMap;
+    private int number=0;
 
     private PoiResult poiResult; // poi返回的结果
     private int currentPage = 0;// 当前页面，从0开始计数
@@ -71,7 +74,7 @@ public class MainActivity extends Activity implements OnClickListener,
     private List<PoiItem> poiItems;// poi数据
 
     private RelativeLayout mPoiDetail;
-    private TextView mPoiName, mPoiAddress;
+    private TextView mPoiName, mPoiAddress, mPoiInfo;
     private String keyWord = "";
     private EditText mSearchText;
     private String city;
@@ -107,6 +110,7 @@ public class MainActivity extends Activity implements OnClickListener,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mapview = (MapView) findViewById(R.id.mapView);
+
         mapview.onCreate(savedInstanceState);
         init();
     }
@@ -150,7 +154,9 @@ public class MainActivity extends Activity implements OnClickListener,
             mAMap.setOnInfoWindowClickListener(this);
             mAMap.setInfoWindowAdapter(this);
             TextView searchButton = (TextView) findViewById(R.id.btn_search);
+            LinearLayout detailButton = (LinearLayout) findViewById(R.id.detail);
             searchButton.setOnClickListener(this);
+            detailButton.setOnClickListener(this);
 
             geocoderSearch = new GeocodeSearch(this);
             geocoderSearch.setOnGeocodeSearchListener(this);
@@ -173,11 +179,9 @@ public class MainActivity extends Activity implements OnClickListener,
         });
         mPoiName = (TextView) findViewById(R.id.poi_name);
         mPoiAddress = (TextView) findViewById(R.id.poi_address);
+        mPoiInfo = (TextView) findViewById(R.id.poi_info);
         mSearchText = (EditText) findViewById(R.id.input_edittext);
     }
-    /**
-     * 开始进行poi搜索
-     */
     /**
      * 开始进行poi搜索
      */
@@ -198,6 +202,14 @@ public class MainActivity extends Activity implements OnClickListener,
 //            System.out.println("what is that:"+keyWord);
             poiSearch.searchPOIAsyn();// 异步搜索
         }
+    }
+
+    /**
+     * 显示所有信息
+     */
+    protected void showAllDetail(){
+        Intent intent = new Intent(this, AllDetailActivity.class);
+        startActivity(intent);
     }
 
     /**
@@ -352,7 +364,8 @@ public class MainActivity extends Activity implements OnClickListener,
 
     private void setPoiItemDisplayContent(final PoiItem mCurrentPoi) {
         mPoiName.setText(mCurrentPoi.getTitle());
-        mPoiAddress.setText(mCurrentPoi.getSnippet() + mCurrentPoi.getDistance());
+        mPoiAddress.setText(mCurrentPoi.getSnippet());
+        mPoiInfo.setText(mCurrentPoi.getDistance() + "米");
     }
 
 
@@ -383,7 +396,9 @@ public class MainActivity extends Activity implements OnClickListener,
             case R.id.btn_search:
                 doSearchQuery();
                 break;
-
+            case R.id.detail:
+                showAllDetail();
+                break;
             default:
                 break;
         }
