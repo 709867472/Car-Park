@@ -12,9 +12,9 @@ import com.amap.api.maps.MapView;
  */
 
 public class AllDetailActivity extends Activity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("看一看1");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
     }

@@ -72,6 +72,7 @@ public class MainActivity extends Activity implements OnClickListener,
     private List<PoiItem> poiItems;// poi数据
 
     private RelativeLayout mPoiDetail;
+    private LinearLayout mDetail;
     private TextView mPoiName, mPoiAddress, mPoiInfo;
     private String keyWord = "";
     private EditText mSearchText;
@@ -178,6 +179,7 @@ public class MainActivity extends Activity implements OnClickListener,
         mPoiInfo = (TextView) findViewById(R.id.poi_info);
         mSearchText = (EditText) findViewById(R.id.input_edittext);
     }
+
     /**
      * 开始进行poi搜索
      */
@@ -198,14 +200,6 @@ public class MainActivity extends Activity implements OnClickListener,
 //            System.out.println("what is that:"+keyWord);
             poiSearch.searchPOIAsyn();// 异步搜索
         }
-    }
-
-    /**
-     * 显示所有信息
-     */
-    public void showAllDetail(View v){
-        Intent intent = new Intent(this, AllDetailActivity.class);
-        startActivity(intent);
     }
 
     /**
@@ -413,6 +407,17 @@ public class MainActivity extends Activity implements OnClickListener,
     private void whetherToShowDetailInfo(boolean isToShow) {
         if (isToShow) {
             mPoiDetail.setVisibility(View.VISIBLE);
+            mDetail = (LinearLayout) findViewById(R.id.detail);
+            mDetail.setOnClickListener(new OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,AllDetailActivity.class);
+                    System.out.println("看一看0");
+                    startActivity(intent);
+                    System.out.println("看一看00");
+                }
+            });
 
         } else {
             mPoiDetail.setVisibility(View.GONE);

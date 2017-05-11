@@ -6,26 +6,23 @@
     density="xhdpi"
     format="10"
     plugin-version="2.3.0"
-    timestamp="1494491440381"
+    timestamp="1494505633515"
     token="8864051065768921673"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="1338" />
+        duration="1377" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="315" />
+        duration="52" />
     <task
         name="verifier"
-        duration="14" />
+        duration="2" />
 
-    <artifact
-        location="/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
-        type="SPLIT" />
     <artifact
         location="/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
         type="SPLIT" />
@@ -35,7 +32,7 @@
 
     <build
         build-mode="FULL"
-        timestamp="1494485868617"
+        timestamp="1494504589371"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
@@ -76,11 +73,8 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1494491440381"
+        timestamp="1494505633515"
         verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
-            type="SPLIT" />
         <artifact
             location="/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
