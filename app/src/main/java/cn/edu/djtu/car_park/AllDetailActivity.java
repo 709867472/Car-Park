@@ -12,11 +12,7 @@ public class AllDetailActivity extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.);
-        detailView = (TextView) findViewById(R.id.all_detail);
-
-        mapview.onCreate(savedInstanceState);
-        init();
+        setContentView(R.layout.activity_detail);
     }
 }
 
