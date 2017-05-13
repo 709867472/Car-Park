@@ -10,8 +10,6 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.tuesda.walker.circlerefresh.CircleRefreshLayout;
-
 
 public class AllDetailActivity extends Activity {
 

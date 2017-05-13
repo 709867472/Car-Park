@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Car_park</string>
     <string name="no_result">对不起，没有搜索到相关数据！</string>
+    <string name="action_settings">Settings</string>
 </resources>
