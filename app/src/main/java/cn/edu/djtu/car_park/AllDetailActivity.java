@@ -2,21 +2,97 @@ package cn.edu.djtu.car_park;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.Toast;
 
-import com.amap.api.maps.AMap;
-import com.amap.api.maps.MapView;
+import com.tuesda.walker.circlerefresh.CircleRefreshLayout;
 
-/**
- * Created by Frank on 11/05/2017.
- */
 
 public class AllDetailActivity extends Activity {
+
+    private CircleRefreshLayout mRefreshLayout;
+    private ListView mList;
+    private Button mStop;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        System.out.println("看一看1");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        mRefreshLayout = (CircleRefreshLayout) findViewById(R.id.refresh_layout);
+        mList = (ListView) findViewById(R.id.list);
+        mStop = (Button) findViewById(R.id.stop_refresh);
+
+        String[] strs = {
+                "The",
+                "Canvas",
+                "class",
+                "holds",
+                "the",
+                "draw",
+                "calls",
+                ".",
+                "To",
+                "draw",
+                "something,",
+                "you",
+                "need",
+                "4 basic",
+                "components",
+                "Bitmap",
+        };
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, strs);
+        mList.setAdapter(adapter);
+
+        mStop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mRefreshLayout.finishRefreshing();
+            }
+        });
+
+        mRefreshLayout.setOnRefreshListener(
+                new CircleRefreshLayout.OnCircleRefreshListener() {
+                    @Override
+                    public void refreshing() {
+                        // do something when refresh starts
+                    }
+
+                    @Override
+                    public void completeRefresh() {
+                        // do something when refresh complete
+                    }
+                });
+
+
+
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
-
