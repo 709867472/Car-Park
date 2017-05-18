@@ -49,6 +49,7 @@ import com.amap.api.services.poisearch.PoiSearch.SearchBound;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.edu.djtu.car_park.util.LotInfo;
 import cn.edu.djtu.car_park.util.ToastUtil;
 
 /**
@@ -59,6 +60,7 @@ public class MainActivity extends Activity implements OnClickListener,
         OnPoiSearchListener, OnGeocodeSearchListener {
     private MapView mapview;
     private AMap mAMap;
+    private LotInfo mLotInfo;
 
     private PoiResult poiResult; // poi返回的结果
     private int currentPage = 0;// 当前页面，从0开始计数
@@ -74,6 +76,8 @@ public class MainActivity extends Activity implements OnClickListener,
     private RelativeLayout mPoiDetail;
     private LinearLayout mDetail;
     private TextView mPoiName, mPoiAddress, mPoiInfo;
+    private String name, address;
+    private int distance;
     private String keyWord = "";
     private EditText mSearchText;
     private String city;
@@ -108,9 +112,12 @@ public class MainActivity extends Activity implements OnClickListener,
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mLotInfo = new LotInfo();
+        mLotInfo.setTotalNumber(200);
+//        mLotInfo.start();
         mapview = (MapView) findViewById(R.id.mapView);
-
         mapview.onCreate(savedInstanceState);
+
         init();
     }
 
@@ -197,7 +204,6 @@ public class MainActivity extends Activity implements OnClickListener,
             if ("停车场".equals(keyWord)) {
                 poiSearch.setBound(new SearchBound(new LatLonPoint(latitude, longitude), 5000, true));// 设置搜索区域为以当前位置点为圆心，其周围5000米范围
             }
-//            System.out.println("what is that:"+keyWord);
             poiSearch.searchPOIAsyn();// 异步搜索
         }
     }
@@ -354,8 +360,11 @@ public class MainActivity extends Activity implements OnClickListener,
 
     private void setPoiItemDisplayContent(final PoiItem mCurrentPoi) {
         mPoiName.setText(mCurrentPoi.getTitle());
+        name = mCurrentPoi.getTitle();
         mPoiAddress.setText(mCurrentPoi.getSnippet());
+        address = mCurrentPoi.getSnippet();
         mPoiInfo.setText(mCurrentPoi.getDistance() + "米");
+        distance = mCurrentPoi.getDistance();
     }
 
 
@@ -412,10 +421,14 @@ public class MainActivity extends Activity implements OnClickListener,
 
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(MainActivity.this,AllDetailActivity.class);
-                    System.out.println("看一看0");
+                    Bundle mBundle = new Bundle();
+                    Intent intent = new Intent(MainActivity.this, AllDetailActivity.class);
+                    intent.putExtra("name", name);
+                    intent.putExtra("address", address);
+                    intent.putExtra("distance", distance);
+                    intent.putExtra("infoObject", mLotInfo);
+                    intent.putExtras(mBundle);
                     startActivity(intent);
-                    System.out.println("看一看00");
                 }
             });
 
@@ -452,8 +465,6 @@ public class MainActivity extends Activity implements OnClickListener,
             if (result != null && result.getRegeocodeAddress() != null
                     && result.getRegeocodeAddress().getFormatAddress() != null) {
                 city = result.getRegeocodeAddress().getCity();
-                System.out.println("latitude:" + latitude + ",longitude:" + longitude);
-                System.out.println("城市：" + city);
             } else {
                 ToastUtil.show(MainActivity.this, R.string.no_result);
             }

@@ -2188,6 +2188,7 @@ containing a value of this type.
         public static final int media_actions=0x7f0b0067;
         public static final int middle=0x7f0b001d;
         public static final int multiply=0x7f0b0014;
+        public static final int navigation=0x7f0b0057;
         public static final int never=0x7f0b0021;
         public static final int none=0x7f0b000e;
         public static final int normal=0x7f0b000a;
@@ -2232,7 +2233,6 @@ containing a value of this type.
         public static final int src_in=0x7f0b0017;
         public static final int src_over=0x7f0b0018;
         public static final int status_bar_latest_event_content=0x7f0b0066;
-        public static final int stop_refresh=0x7f0b0057;
         public static final int submenuarrow=0x7f0b0040;
         public static final int submit_area=0x7f0b0051;
         public static final int tabMode=0x7f0b000b;

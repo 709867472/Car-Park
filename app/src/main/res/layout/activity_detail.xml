@@ -20,7 +20,7 @@
     </cn.edu.djtu.car_park.CircleRefreshLayout>
 
     <Button
-        android:id="@+id/stop_refresh"
+        android:id="@+id/navigation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

@@ -1,6 +1,7 @@
 package cn.edu.djtu.car_park;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -8,14 +9,25 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
+
+import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import cn.edu.djtu.car_park.util.LotInfo;
 
 
 public class AllDetailActivity extends Activity {
 
     private CircleRefreshLayout mRefreshLayout;
     private ListView mList;
-    private Button mStop;
+    private String empty;
+    private Button navigationButton;
+    private LotInfo mLotInfo;
+    private String name, address;
+    private int distance;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,52 +36,67 @@ public class AllDetailActivity extends Activity {
 
         mRefreshLayout = (CircleRefreshLayout) findViewById(R.id.refresh_layout);
         mList = (ListView) findViewById(R.id.list);
-        mStop = (Button) findViewById(R.id.stop_refresh);
+        navigationButton = (Button) findViewById(R.id.navigation);
 
-        String[] strs = {
-                "The",
-                "Canvas",
-                "class",
-                "holds",
-                "the",
-                "draw",
-                "calls",
-                ".",
-                "To",
-                "draw",
-                "something,",
-                "you",
-                "need",
-                "4 basic",
-                "components",
-                "Bitmap",
-        };
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, strs);
-        mList.setAdapter(adapter);
-
-        mStop.setOnClickListener(new View.OnClickListener() {
+        navigationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mRefreshLayout.finishRefreshing();
+
             }
         });
 
+        mLotInfo = new LotInfo();
         mRefreshLayout.setOnRefreshListener(
                 new CircleRefreshLayout.OnCircleRefreshListener() {
                     @Override
                     public void refreshing() {
-                        // do something when refresh starts
+                        long stop = System.currentTimeMillis() + 2000;
+                        Date stopDate = new Date();
+                        stopDate.setTime(stop);
+                        Timer timer = new Timer();
+                        TimerTask timerTask = new TimerTask() {
+                            @Override
+                            public void run() {
+                                mRefreshLayout.finishRefreshing();
+                            }
+                        };
+                        timer.schedule(timerTask, stopDate);
                     }
 
                     @Override
                     public void completeRefresh() {
-                        // do something when refresh complete
+
+                    }
+
+                    @Override
+                    public void setItems() {
+                        empty = String.valueOf(mLotInfo.getEmptyNumber());
+                        String[] strs = {
+                                name,
+                                address,
+                                "距离：" + distance + "米",
+                                "总泊位数：" + mLotInfo.getTotalNumber(),
+                                "空泊位数：" + empty,
+                                "收费标准：15分钟内免费,2.5元/30分钟,35元/天,300元/月"
+                        };
+                        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(AllDetailActivity.this, android.R.layout.simple_list_item_1, strs);
+                        mList.setAdapter(adapter);
                     }
                 });
 
 
-
-
+        getIntentData();
+        empty = String.valueOf(mLotInfo.getEmptyNumber());
+        String[] strs = {
+                name,
+                address,
+                "距离：" + distance + "米",
+                "总泊位数：" + mLotInfo.getTotalNumber(),
+                "空泊位数：" + empty,
+                "收费标准：15分钟内免费,2.5元/30分钟,35元/天,300元/月"
+        };
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, strs);
+        mList.setAdapter(adapter);
     }
 
     @Override
@@ -92,5 +119,14 @@ public class AllDetailActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void getIntentData() {
+        intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        name = bundle.getString("name");
+        address = bundle.getString("address");
+        distance = bundle.getInt("distance");
+        mLotInfo = (LotInfo) (bundle.getSerializable("infoObject"));
     }
 }

@@ -220,6 +220,7 @@ public class CircleRefreshLayout extends FrameLayout {
                         mHeader.releaseDrag();
                         mIsRefreshing = true;
                         if (onCircleRefreshListener!=null) {
+                            onCircleRefreshListener.setItems();
                             onCircleRefreshListener.refreshing();
                         }
 
@@ -264,7 +265,7 @@ public class CircleRefreshLayout extends FrameLayout {
 
     public interface OnCircleRefreshListener {
         void completeRefresh();
-
         void refreshing();
+        void setItems();
     }
 }
