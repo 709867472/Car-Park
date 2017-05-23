@@ -9,17 +9,32 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.amap.api.maps.AMap;
+import com.amap.api.services.core.AMapException;
+import com.amap.api.services.core.LatLonPoint;
+import com.amap.api.services.route.BusRouteResult;
+import com.amap.api.services.route.DrivePath;
+import com.amap.api.services.route.DriveRouteResult;
+import com.amap.api.services.route.RideRouteResult;
+import com.amap.api.services.route.RouteSearch;
+import com.amap.api.services.route.WalkRouteResult;
 
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import cn.edu.djtu.car_park.overlay.DrivingRouteOverlay;
+import cn.edu.djtu.car_park.util.AMapUtil;
 import cn.edu.djtu.car_park.util.LotInfo;
+import cn.edu.djtu.car_park.util.ToastUtil;
 
 
 public class AllDetailActivity extends Activity {
 
+    private AMap mAMap;
     private CircleRefreshLayout mRefreshLayout;
     private ListView mList;
     private String empty;
@@ -28,6 +43,8 @@ public class AllDetailActivity extends Activity {
     private String name, address;
     private int distance;
     private Intent intent;
+    private LatLonPoint mStartPoint;//导航时的起点，即当前位置
+    private LatLonPoint mEndPoint;//导航时的终点，即目的地停车场
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +58,12 @@ public class AllDetailActivity extends Activity {
         navigationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Bundle mBundle = new Bundle();
+                Intent intent = new Intent(AllDetailActivity.this, DriveRouteActivity.class);
+                intent.putExtra("mStartPoint", mStartPoint);
+                intent.putExtra("mEndPoint", mEndPoint);
+                intent.putExtras(mBundle);
+                startActivity(intent);
 
             }
         });
@@ -128,5 +151,8 @@ public class AllDetailActivity extends Activity {
         address = bundle.getString("address");
         distance = bundle.getInt("distance");
         mLotInfo = (LotInfo) (bundle.getSerializable("infoObject"));
+        mStartPoint = (LatLonPoint) (bundle.getParcelable("mStartPoint"));
+        mEndPoint = (LatLonPoint) (bundle.getParcelable("mEndPoint"));
     }
+
 }

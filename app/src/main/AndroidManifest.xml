@@ -63,6 +63,12 @@
         <activity android:name=".AllDetailActivity">
 
         </activity>
+        <activity android:name=".DriveRouteDetailActivity">
+
+        </activity>
+        <activity android:name=".DriveRouteActivity">
+
+        </activity>
     </application>
 
 </manifest>

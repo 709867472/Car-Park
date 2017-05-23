@@ -4,6 +4,10 @@
         "source": "/Users/Frank/.android/build-cache/f971a0423098ec8ec5d143a70ea374f6d4dd5555/output/res/layout/notification_template_big_media_narrow_custom.xml"
     },
     {
+        "merged": "/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/res/merged/debug/layout/item_bus_segment.xml",
+        "source": "/Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/res/layout/item_bus_segment.xml"
+    },
+    {
         "merged": "/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
         "source": "/Users/Frank/.android/build-cache/f971a0423098ec8ec5d143a70ea374f6d4dd5555/output/res/layout/select_dialog_item_material.xml"
     },
@@ -26,6 +30,10 @@
     {
         "merged": "/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
         "source": "/Users/Frank/.android/build-cache/f971a0423098ec8ec5d143a70ea374f6d4dd5555/output/res/layout/abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/res/merged/debug/layout/activity_route_detail.xml",
+        "source": "/Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/res/layout/activity_route_detail.xml"
     },
     {
         "merged": "/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
@@ -94,6 +102,10 @@
     {
         "merged": "/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
         "source": "/Users/Frank/.android/build-cache/f971a0423098ec8ec5d143a70ea374f6d4dd5555/output/res/layout/notification_template_media.xml"
+    },
+    {
+        "merged": "/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/res/merged/debug/layout/activity_route.xml",
+        "source": "/Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/res/layout/activity_route.xml"
     },
     {
         "merged": "/Users/Frank/AndroidStudioProjects/Car_Park/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",

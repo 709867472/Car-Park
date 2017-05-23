@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:2:1-68:12
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:2:1-74:12
 	package
 		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:3:5-35
 		INJECTED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml
@@ -58,7 +58,7 @@ ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManif
 	android:name
 		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:40:22-71
 application
-ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:42:5-66:19
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:42:5-72:19
 MERGED from [com.android.support:appcompat-v7:25.0.1] /Users/Frank/.android/build-cache/f971a0423098ec8ec5d143a70ea374f6d4dd5555/output/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-v4:25.0.1] /Users/Frank/.android/build-cache/48de9caf9f815a08ffb75b8035ee374eaa2fd917/output/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-fragment:25.0.1] /Users/Frank/.android/build-cache/d30f7ecc5264d8ec87d39a673e38b31105962ab6/output/AndroidManifest.xml:25:5-20
@@ -109,6 +109,14 @@ activity#cn.edu.djtu.car_park.AllDetailActivity
 ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:63:9-65:20
 	android:name
 		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:63:19-52
+activity#cn.edu.djtu.car_park.DriveRouteDetailActivity
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:66:9-68:20
+	android:name
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:66:19-59
+activity#cn.edu.djtu.car_park.DriveRouteActivity
+ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:69:9-71:20
+	android:name
+		ADDED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml:69:19-53
 uses-sdk
 INJECTED from /Users/Frank/AndroidStudioProjects/Car_Park/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:25.0.1] /Users/Frank/.android/build-cache/f971a0423098ec8ec5d143a70ea374f6d4dd5555/output/AndroidManifest.xml:21:5-23:78

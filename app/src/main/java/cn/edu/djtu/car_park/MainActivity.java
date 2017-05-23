@@ -49,6 +49,7 @@ import com.amap.api.services.poisearch.PoiSearch.SearchBound;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import cn.edu.djtu.car_park.util.LotInfo;
 import cn.edu.djtu.car_park.util.ToastUtil;
 
@@ -66,22 +67,29 @@ public class MainActivity extends Activity implements OnClickListener,
     private int currentPage = 0;// 当前页面，从0开始计数
     private PoiSearch.Query query;// Poi查询条件类
     //    private LatLonPoint lp = new LatLonPoint(38.913694, 121.614755);// 大连坐标
-    private Marker locationMarker; // 选择的点
+//    private Marker locationMarker; // 选择的点
     private Marker detailMarker;
     private Marker mlastMarker;
     private PoiSearch poiSearch;
     private MyPoiOverlay poiOverlay;// poi图层
     private List<PoiItem> poiItems;// poi数据
 
+    public AMapLocationClientOption mLocationOption = null;//声明AMapLocationClientOption对象
+    private double latitude = 0;
+    private double longitude = 0;
     private RelativeLayout mPoiDetail;
+    private RelativeLayout mBottomLayout;
     private LinearLayout mDetail;
     private TextView mPoiName, mPoiAddress, mPoiInfo;
+    private TextView mRotueTimeDes, mRouteDetailDes;
     private String name, address;
     private int distance;
     private String keyWord = "";
     private EditText mSearchText;
     private String city;
-    private GeocodeSearch geocoderSearch;
+    private LatLonPoint mStartPoint;//导航时的起点，即当前位置
+    private LatLonPoint mEndPoint;//导航时的终点，即目的地停车场
+    private GeocodeSearch geocoderSearch;//地理编码对象
 
     public AMapLocationClient mLocationClient = null;//声明AMapLocationClient类对象
     //声明定位回调监听器
@@ -92,6 +100,8 @@ public class MainActivity extends Activity implements OnClickListener,
                 if (aMapLocation.getErrorCode() == 0) {
                     latitude = aMapLocation.getLatitude();//获取纬度
                     longitude = aMapLocation.getLongitude();//获取经度
+
+                    mStartPoint = new LatLonPoint(latitude, longitude);
 
                     RegeocodeQuery query = new RegeocodeQuery(new LatLonPoint(latitude, longitude), 200, GeocodeSearch.AMAP);// 第一个参数表示一个Latlng，第二参数表示范围多少米，第三个参数表示是火系坐标系还是GPS原生坐标系
                     geocoderSearch.getFromLocationAsyn(query);// 设置异步逆地理编码请求
@@ -104,9 +114,6 @@ public class MainActivity extends Activity implements OnClickListener,
             }
         }
     };
-    public AMapLocationClientOption mLocationOption = null;//声明AMapLocationClientOption对象
-    private double latitude = 0;
-    private double longitude = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -164,6 +171,10 @@ public class MainActivity extends Activity implements OnClickListener,
 
             geocoderSearch = new GeocodeSearch(this);
             geocoderSearch.setOnGeocodeSearchListener(this);
+
+            mBottomLayout = (RelativeLayout) findViewById(R.id.bottom_layout);
+            mRotueTimeDes = (TextView) findViewById(R.id.firstline);
+            mRouteDetailDes = (TextView) findViewById(R.id.secondline);
         }
         setup();
     }
@@ -365,6 +376,7 @@ public class MainActivity extends Activity implements OnClickListener,
         address = mCurrentPoi.getSnippet();
         mPoiInfo.setText(mCurrentPoi.getDistance() + "米");
         distance = mCurrentPoi.getDistance();
+        mEndPoint = mCurrentPoi.getLatLonPoint();
     }
 
 
@@ -427,6 +439,8 @@ public class MainActivity extends Activity implements OnClickListener,
                     intent.putExtra("address", address);
                     intent.putExtra("distance", distance);
                     intent.putExtra("infoObject", mLotInfo);
+                    intent.putExtra("mStartPoint",mStartPoint);
+                    intent.putExtra("mEndPoint",mEndPoint);
                     intent.putExtras(mBundle);
                     startActivity(intent);
                 }
@@ -528,7 +542,7 @@ public class MainActivity extends Activity implements OnClickListener,
                 if (mamap == null)
                     return;
                 LatLngBounds bounds = getLatLngBounds();
-                mamap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
+                mamap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
             }
         }
 

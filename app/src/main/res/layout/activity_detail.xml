@@ -25,5 +25,5 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="Stop Refreshing" />
+        android:text="导航" />
 </RelativeLayout>

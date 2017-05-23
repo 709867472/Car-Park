@@ -8,4 +8,7 @@
     <color name="darkgrey"> #C0C0C0</color>
     <color name="gary">#898989</color>
     <color name="blue">#4c90f9</color>
+    <color name="act_background">#efefef</color>
+    <color name="phone_bg">#f6f6f6</color>
+    <color name="black"> #000000</color>
 </resources>
