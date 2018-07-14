@@ -20,8 +20,7 @@ public class ToastUtil {
         Toast.makeText(context, info, Toast.LENGTH_LONG).show();
     }
 
-    public static void showerror(Context context, int rCode){
-
+    public static void showerror(Context context, int rCode) {
         try {
             switch (rCode) {
                 //服务错误码
@@ -126,7 +125,7 @@ public class ToastUtil {
                 case 4001:
                     throw new AMapException(AMapException.AMAP_SHARE_FAILURE);
                 default:
-                    Toast.makeText(context,"查询失败："+rCode , Toast.LENGTH_LONG).show();
+                    Toast.makeText(context,"查询失败：" + rCode , Toast.LENGTH_LONG).show();
                     logError("查询失败", rCode);
                     break;
             }
@@ -151,32 +150,32 @@ public class ToastUtil {
 
     //log
     public static final String TAG = "AMAP_ERROR";
-    static final String LINE_CHAR="=";
-    static final String BOARD_CHAR="|";
+    static final String LINE_CHAR = "=";
+    static final String BOARD_CHAR = "|";
     static final int LENGTH = 80;
     static  String LINE;
-    static{
+    static {
         StringBuilder sb = new StringBuilder();
-        for(int i = 0;i<LENGTH;i++){
-            sb .append(LINE_CHAR);
+        for (int i = 0; i < LENGTH; i++) {
+            sb.append(LINE_CHAR);
         }
         LINE = sb.toString();
     }
 
 
-    private static void printLog(String s){
-        if(s.length()<LENGTH-2){
+    private static void printLog(String s) {
+        if(s.length() < LENGTH - 2){
             StringBuilder sb = new StringBuilder();
             sb.append(BOARD_CHAR).append(s);
-            for(int i = 0 ;i <LENGTH-2-s.length();i++){
+            for(int i = 0 ; i < LENGTH - 2 - s.length(); i++){
                 sb.append(" ");
             }
             sb.append(BOARD_CHAR);
             print(sb.toString());
         }else{
-            String line = s.substring(0,LENGTH-2);
-            print(BOARD_CHAR+line+BOARD_CHAR);
-            printLog(s.substring(LENGTH-2));
+            String line = s.substring(0, LENGTH - 2);
+            print(BOARD_CHAR + line + BOARD_CHAR);
+            printLog(s.substring(LENGTH - 2));
         }
     }
 
